@@ -105,7 +105,7 @@ export default function Navbar() {
             </NavLink>
           ))}
           <a
-            href="https://drive.google.com/file/d/17RA4cKAM-9c1Iphbce05xFF8_E3fYxq3/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1aBIO0mbmIbNuLH6f42_Cdv8V9Y6bNKDM/view?usp=drive_link"
             className="mt-2 font-mono text-xs px-4 py-3 border border-accent text-accent rounded-lg text-center"
           >
             Download Resume ↗
