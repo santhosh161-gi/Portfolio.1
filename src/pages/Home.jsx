@@ -42,89 +42,106 @@ export default function Home() {
   return (
     <div ref={heroRef}>
       {/* HERO */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden w-full">
-        <div className="orb-1 absolute top-20 left-1/4 w-72 h-72 rounded-full bg-accent/5 blur-3xl pointer-events-none" />
-        <div className="orb-2 absolute bottom-20 right-1/4 w-96 h-96 rounded-full bg-accent2/5 blur-3xl pointer-events-none" />
+     <section className="relative min-h-screen flex items-center overflow-hidden w-full">
+  {/* Background Orbs */}
+  <div className="absolute top-10 md:top-20 left-1/2 w-48 md:w-72 h-48 md:h-72 rounded-full bg-accent/5 blur-3xl pointer-events-none" />
+  <div className="absolute bottom-10 md:bottom-20 right-1/2 w-64 md:w-96 h-64 md:h-96 rounded-full bg-accent2/5 blur-3xl pointer-events-none" />
 
-        <div className="mx-auto px-6 w-full py-20 grid md:grid-cols-2 gap-12 items-center">
-          {/* Left */}
-          <div>
-            <div className="hero-label font-mono text-xs text-accent tracking-widest uppercase mb-6 flex items-center gap-2">
-              <span className="w-8 h-px bg-accent inline-block" />
-              Available for opportunities
-              <span className="w-2 h-2 rounded-full bg-accent animate-pulse inline-block" />
-            </div>
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 w-full">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-            <h1 className="hero-name font-display font-bold text-5xl md:text-6xl xl:text-7xl text-text leading-[1.05] tracking-tight">
-              Hi, I'm{" "}
-              <span className="text-red-400 glow-text">Santhosh Mathavan</span>
-            </h1>
+      {/* Left Content */}
+      <div className="order-2  text-center md:text-left">
 
-            <div className="hero-role mt-4 flex items-center gap-3">
-              <span className="font-mono text-dim text-sm">&gt;</span>
-              <span className="font-mono text-base text-slate-100">{personal.role}</span>
-            </div>
+        <div className="hero-label font-mono text-[10px] sm:text-xs text-accent tracking-widest uppercase mb-4 md:mb-6 flex items-center justify-center md:justify-start gap-2">
+          <span className="w-6 md:w-8 h-px bg-accent inline-block" />
+          Available for opportunities
+          <span className="w-2 h-2 rounded-full bg-accent animate-pulse inline-block" />
+        </div>
 
-            <p className="hero-bio text-dim font-body text-base leading-relaxed mt-6 max-w-md">
-              {personal.bio}
-            </p>
+        <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl xl:text-7xl text-text leading-tight tracking-tight">
+          Hi, I'm{" "}
+          <span className="text-red-400 glow-text">
+            Santhosh Mathavan
+          </span>
+        </h1>
 
-            <div className="hero-cta flex flex-wrap gap-3 mt-8">
-              <Link
-                to="/projects"
-                className="inline-flex items-center gap-2 bg-slate-200 text-bg font-mono text-sm px-5 py-3 rounded-xl hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20 transition-all duration-200"
-              >
-                View Projects <ArrowRight size={16} />
-              </Link>
+        <div className="mt-4 flex items-center justify-center md:justify-start gap-3">
+          <span className="font-mono text-dim text-sm">&gt;</span>
+          <span className="font-mono text-sm sm:text-base text-slate-100">
+            {personal.role}
+          </span>
+        </div>
+
+        <p className="text-dim text-sm sm:text-base leading-relaxed mt-6 max-w-xl mx-auto md:mx-0">
+          {personal.bio}
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-3 mt-8">
+          <Link
+            to="/projects"
+            className="inline-flex items-center justify-center gap-2 bg-slate-200 text-bg font-mono text-sm px-5 py-3 rounded-xl hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/20 transition-all"
+          >
+            View Projects <ArrowRight size={16} />
+          </Link>
+
+          <a
+            href={personal.resumeUrl}
+            className="inline-flex items-center justify-center gap-2 border border-border text-dim font-mono text-sm px-5 py-3 rounded-xl hover:border-accent/40 hover:text-text transition-all"
+          >
+            <Download size={15} /> Resume
+          </a>
+        </div>
+
+        {/* Social Card */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center gap-4 sm:gap-5 px-4 sm:px-5 py-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-[0_0_30px_rgba(255,255,255,0.03)]">
+
+          <span className="text-gray-400 font-mono text-xs uppercase tracking-widest">
+            Find me on
+          </span>
+
+          <div className="flex gap-3">
+            {[
+              { href: personal.github, icon: Github },
+              { href: personal.linkedin, icon: Linkedin },
+              { href: `mailto:${personal.email}`, icon: Mail },
+            ].map(({ href, icon: Icon }) => (
               <a
-                href={personal.resumeUrl}
-                className="inline-flex items-center gap-2 border border-border text-dim font-mono text-sm px-5 py-3 rounded-xl hover:border-accent/40 hover:text-text transition-all duration-200"
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                className="group w-10 h-10 sm:w-11 sm:h-11 rounded-xl border border-white/10 bg-black/40 flex items-center justify-center text-gray-300 transition-all duration-300 hover:border-accent hover:bg-accent/10 hover:text-accent hover:-translate-y-1"
               >
-                <Download size={15} /> Resume
+                <Icon
+                  size={18}
+                  className="transition-transform duration-300 group-hover:scale-110"
+                />
               </a>
-            </div>
-
-            <div className="hero-socials mt-8 inline-flex flex-wrap items-center gap-5 px-5 py-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-[0_0_30px_rgba(255,255,255,0.03)]">
-              <span className="text-gray-400 font-mono text-xs uppercase tracking-widest">
-                Find me on
-              </span>
-
-              <div className="flex gap-3">
-                {[
-                  { href: personal.github, icon: Github },
-                  { href: personal.linkedin, icon: Linkedin },
-                  { href: `mailto:${personal.email}`, icon: Mail },
-                ].map(({ href, icon: Icon }) => (
-                  <a
-                    key={href}
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group w-11 h-11 rounded-xl border border-white/10 bg-black/40 flex items-center justify-center text-gray-300 transition-all duration-300 hover:border-accent hover:bg-accent/10 hover:text-accent hover:shadow-[0_0_20px_rgba(110,231,183,0.25)] hover:-translate-y-1"
-                  >
-                    <Icon
-                      size={18}
-                      className="transition-transform duration-300 group-hover:scale-110"
-                    />
-                  </a>
-                ))}
-              </div>
-
-              <div className="hidden sm:block w-px h-8 bg-white/10" />
-
-              <div className="flex items-center gap-2 text-gray-400 text-sm font-medium">
-                <div className="w-7 h-7 rounded-full bg-accent/10 flex items-center justify-center text-accent">
-                  <MapPin size={14} />
-                </div>
-                <span>{personal.location}</span>
-              </div>
-            </div>
+            ))}
           </div>
 
-          {/* Right — Profile Image */}
-         <HeroCard personal={personal}/>
+          <div className="hidden sm:block w-px h-8 bg-white/10" />
+
+          <div className="flex items-center gap-2 text-gray-400 text-sm">
+            <div className="w-7 h-7 rounded-full bg-accent/10 flex items-center justify-center text-accent">
+              <MapPin size={14} />
+            </div>
+            <span>{personal.location}</span>
+          </div>
+
         </div>
-      </section>
+      </div>
+
+      {/* Right Image */}
+      <div className="order-2  flex justify-center">
+        <HeroCard personal={personal} />
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* QUICK PREVIEW: PROJECTS */}
       <section className="w-full mx-auto px-6 pb-20">

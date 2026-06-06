@@ -39,6 +39,8 @@ useEffect(() => {
           overflow: hidden;
           border: 1px solid rgba(255,255,255,0.1);
           background: rgba(255,255,255,0.05);
+          display: inline-block;
+          max-width: 100%;
         }
         .hc-img {
           width: 100%;
@@ -173,6 +175,59 @@ useEffect(() => {
           letter-spacing: -0.2px;
           display: block;
         }
+          /* Mobile */
+@media (max-width: 576px) {
+  .hc-frame {
+    width: 280px;
+    height: 360px;
+  }
+
+  .hc-exp-badge {
+    right: -8px;
+  }
+
+  .hc-corner-tag {
+    left: -10px;
+    bottom: 55px;
+    padding: 6px 10px;
+  }
+
+  .hc-corner-value {
+    font-size: 10px;
+  }
+
+  .hc-name {
+    font-size: 13px;
+  }
+
+  .hc-root {
+    padding: 1.5rem 0.5rem;
+  }
+}
+
+/* Small Tablets */
+@media (min-width: 577px) and (max-width: 768px) {
+  .hc-frame {
+    width: 320px;
+    height: 420px;
+  }
+}
+
+/* Tablets */
+@media (min-width: 769px) and (max-width: 992px) {
+  .hc-frame {
+    width: 340px;
+    height: 440px;
+  }
+}
+
+/* Large Screens */
+@media (min-width: 1400px) {
+  .hc-frame {
+    width: 420px;
+    height: 540px;
+  }
+}
       `}</style>
 
       <div className="hc-wrap">
